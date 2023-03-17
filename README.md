@@ -13,7 +13,7 @@ To run this project locally, you will need:
 
 - .NET 7 SDK
 - PostgreSQL server
-- Visual Studio Code or any other code editor
+- Visual Studio Code or Visual Studio
 - EF Core - .NET Core CLI
 
 ### Terminal Commands
