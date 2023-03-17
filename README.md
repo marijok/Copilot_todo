@@ -39,6 +39,9 @@ The web API exposes the following endpoints:
 
 You can use Postman or Swagger(localhost:port/swagger) to test these endpoints.
 
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/110940406/225851953-cdf7d971-f7ed-4be6-b636-11783467ac65.png">
+
+
 ## Example Response
 
 ```bash
