@@ -88,11 +88,31 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
+        // Annotate the method with HttpPut attribute to handle PUT requests with an id parameter for completing a todo item
+        [HttpPut("{id}/complete")]
+        public async Task<IActionResult> CompleteTodoItem(long id)
+        {
+            var todoItem = await _context.TodoItems.FindAsync(id);
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+
+            // Mark the item as completed
+            todoItem.IsCompleted = true;
+            _context.Entry(todoItem).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
         // Annotate the method with HttpPost attribute to handle POST requests without parameters
         [HttpPost]
         // Define an async method that takes a TodoItem parameter named todoItem and returns an ActionResult of TodoItem
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
+            // Ensure new items are not completed
+            todoItem.IsCompleted = false;
             // Add the todo item entity to the database context
             _context.TodoItems.Add(todoItem);
             // Save the changes to the database as an asynchronous operation
